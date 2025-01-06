@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c998d5e9cf.js" crossorigin="anonymous"></script>
+    <title>HealStep Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>  
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="leftBar">
+            <i class="fas fa-bars" id="sidebarToggle"></i>
+        </div>
+        <!-- <div style="width: 95%;"></div>
+        <div class="rightBar">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user"></i>
+        </div> -->
+    </div>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="activity.html"><i class="fas fa-chart-line"></i> Activity</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    
+    <div id ="content">
+        <div class ="dashboard">
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="card-value">42%</div>
+                        <div class="card-label">Weekly Progress</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon"><i class="fas fa-fire"></i></div>
+                        <div class="card-value">N/A</div>
+                        <div class="card-label"></div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon"><i class="fas fa-clock"></i></div>
+                        <div class="card-value"></div>
+                        <div class="card-label"></div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon"><i class="fas fa-bed"></i></div>
+                        <div class="card-value">8 Hours</div>
+                        <div class="card-label">Sleeping Potency</div>
+                    </div>
+                    <div class="overview-card">
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <div class="card-value"></div>
+                        <div class="card-label"></div>
+                    </div>
+                </div>
+    
+        </div>
+        <div class="actgraph">
+                <div class="activity-container">
+                    <h2>Activity Over Time</h2>
+                    <canvas id="timescalechart"></canvas>
+                    <script src="timescalechart.js"></script>
+                </div>
+           <div class="charts">
+                    <div class="doughnut-chart">
+                      <h3>Knee Rotation</h3>
+                      <canvas id="doughnutChart"></canvas>
+                    </div>
+                    <div class="doughnut-chart">
+                      <h3>Daily Progression</h3>
+                      <canvas id="doughnutChart2"></canvas>
+                    </div>
+                    <script src="chart.js"></script>
+                  </div>
+            </div>  
+        </div>
+        
+          
+        </div>
+     
+         
+    </div>
+    </div>
+    </div>
+    <script src="sidebar.js"></script>
+    <script src="updateTime.js"></script>
+   
+    
+   
+</body>
+</html>
+            
+
+ 
