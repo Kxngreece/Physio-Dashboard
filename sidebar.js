@@ -8,11 +8,6 @@ sidebarToggle.addEventListener("click", () => {
     content.classList.toggle("expanded");
   });
 
-// Sidebar toggle functionality
-const sidebarToggle = document.getElementById("sidebarToggle");
-const sidebar = document.getElementById("sidebar");
-const content = document.getElementById("content");
-
 // Toggle sidebar on button click
 sidebarToggle.addEventListener("click", () => {
     sidebar.classList.toggle("collapsed");
