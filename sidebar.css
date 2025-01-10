@@ -1,0 +1,170 @@
+/* General Styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 60px; /* Default collapsed width */
+  height: 100%;
+  background-color: #000b58;
+  border-radius: 0 8px 8px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+  overflow: visible;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.sidebar.expanded {
+  width: 150px; /* Expanded width on toggle */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 70px 0 0; /* Push items down */
+}
+
+.sidebar ul li {
+  position: relative;
+  width: 100%;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Icons are centered in collapsed mode */
+  color: white;
+  text-decoration: none;
+  padding: 10px 0;
+  position: relative;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar ul li a i {
+  font-size: 20px;
+}
+
+/* Tooltip Styling */
+.sidebar ul li a span {
+  display: none; /* Hidden by default */
+  position: absolute;
+  left: 70px; /* Tooltip position outside the collapsed sidebar */
+  white-space: nowrap;
+  color: white;
+  background-color: #000b58;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth fade and movement */
+  opacity: 0;
+  transform: translateX(-10px); /* Slight offset for smooth animation */
+}
+
+/* Tooltip Hover Effect (Collapsed State) */
+.sidebar:not(.expanded) ul li:hover a span {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar.expanded ul li a span {
+  display: inline-block;
+  position: static;
+  margin-left: 10px;
+  transform: none;
+  opacity: 1;
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none; /* Remove shadow in expanded state */
+}
+
+/* Hover Effects */
+.sidebar ul li a:hover {
+  background-color: #004aad;
+  color: gold;
+}
+
+/* Content Area */
+#content {
+  margin-left: 60px;
+  transition: margin-left 0.3s ease-in-out;
+  width: calc(100% - 60px);
+}
+
+.sidebar.expanded + #content {
+  margin-left: 150px;
+  width: calc(100% - 150px);
+}
+
+/* Sidebar Toggle */
+.sidebarToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center align in collapsed mode */
+  font-size: 20px; /* Adjust size for visibility */
+  color: white;
+  cursor: pointer;
+  margin: 20px;
+  position: relative; /* For tooltip positioning */
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebarToggle i {
+  font-size: 20px; /* Icon size */
+}
+
+.sidebarToggle:hover {
+  background-color: #004aad; /* Match hover effect with icons */
+  color: gold;
+}
+
+/* Tooltip Styling for Sidebar Toggle */
+.sidebarToggle span {
+  display: none; /* Hidden by default */
+  position: absolute;
+  left: 50px; /* Tooltip position */
+  white-space: nowrap;
+  color: white;
+  background-color: #000b58;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  z-index: 1100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.sidebar:not(.expanded) .sidebarToggle:hover span {
+  display: block; /* Show tooltip */
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Tooltip Styling in Expanded State */
+.sidebar.expanded .sidebarToggle span {
+  display: inline-block;
+  position: static;
+  margin-left: 10px;
+  transform: none;
+  opacity: 1;
+  background-color: transparent;
+  color: inherit;
+  box-shadow: none;
+}

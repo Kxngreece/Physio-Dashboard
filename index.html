@@ -6,6 +6,7 @@
     <script src="https://kit.fontawesome.com/c998d5e9cf.js" crossorigin="anonymous"></script>
     <title>HealStep Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="sidebar.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/moment"></script>
@@ -13,37 +14,54 @@
 </head>
 <body>
 
+  
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <i class="fas fa-bars" id="sidebarToggle"></i>
+        <div id="sidebarToggle" class="sidebarToggle">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+          </div>
         <ul>
-          <li>
-            <a href="index.html">
-              <i class="fas fa-home"></i>
-              <span>Home</span>
-            </a>
-          </li>
-          <li>
-            <a href="activity.html">
-              <i class="fas fa-chart-line"></i>
-              <span>Activity</span>
-            </a>
-          </li>
-          <li>
-            <a href="profile.html">
-              <i class="fas fa-user"></i>
-              <span>Profile</span>
-            </a>
-          </li>
-          <li>
-            <a href="logout.html">
-              <i class="fas fa-sign-out-alt"></i>
-              <span>Logout</span>
-            </a>
-          </li>
-        </ul>
-
-        <script src="sidebar.js"></script>
-      </div>
+            <li>
+                <a href="index.html">
+                  <i class="fas fa-home"></i>
+                  <span>Home</span>
+                </a>
+              </li>
+              <li>
+                <a href="activity.html">
+                  <i class="fas fa-chart-line"></i>
+                  <span>Activity</span>
+                </a>
+              </li>
+              <li>
+                <a href="profile.html">
+                  <i class="fas fa-user"></i>
+                  <span>Profile</span>
+                </a>
+              </li>
+              <li>
+                <a href="alerts.html">
+                  <i class="fas fa-bell"></i>
+                  <span>Alerts</span>
+                </a>
+              </li>
+                <li>
+                    <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                    </a>
+              <li>
+                <a href="logout.html">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+            <script src="sidebar.js"></script>
+          </div>
+    </div>
+    <!-- End of Sidebar -->
       
     
     <div id ="content">
