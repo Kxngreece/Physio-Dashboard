@@ -67,7 +67,7 @@
     <div id ="content">
         <div class ="dashboard">
                 <div class="overview-grid">
-                    <div class="overview-card">
+                    <div class="overview-card" >
                         <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                         <div class="card-value">4 hours</div>
                         <div class="card-label"> Daily Progress</div>
@@ -75,14 +75,15 @@
                 
                     <div class="overview-card">
                         <div class="card-icon"><i class="fas fa-bell"></i></div>
-                        <div class="card-value">5</div>
+                        <div class="card-value" id="alert_counter"></div>
                         <div class="card-label">Alerts</div>
-                        <script src = "fetch.js"></script>
+                        <script src = "alertcount.js"></script>
                     </div>
                     <div class="overview-card">
                         <div class="card-icon"><i class="fas fa-calendar"></i></div>
-                        <div class="card-value">8 </div>
+                        <div class="card-value" id="appoint_counter"></div>
                         <div class="card-label">Appointments</div>
+                        <script src = "appointcount.js"></script>
                     </div>
                     <div class="overview-card">
                         <div class="card-icon"><i class="fas fa-download"></i></div>
