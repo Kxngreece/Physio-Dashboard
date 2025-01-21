@@ -1,5 +1,6 @@
 function table(data){
-    const tableBody = document.querySelector("#alert-table tbody");
+    const tableBody = document.querySelector("#alertTable tbody");
+    
     tableBody.innerHTML = ''
     if(data.length === 0){
         const row = document.createElement("tr");
@@ -18,7 +19,7 @@ function table(data){
             // Create and populate cells for each field
 
             const IDCell = document.createElement("td");
-            IDCellCell.textContent = data[i].id;
+            IDCell.textContent = data[i].id;
             row.appendChild(IDCell);
         
             const braceCell = document.createElement("td");
