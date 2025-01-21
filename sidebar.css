@@ -26,6 +26,7 @@ body {
   transition: width 0.3s ease-in-out;
   overflow: visible;
   z-index: 1000; /* Ensure it stays on top */
+  /* margin-right: 20px; */
 }
 
 .sidebar.expanded {

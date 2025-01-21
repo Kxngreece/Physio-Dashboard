@@ -1,13 +1,37 @@
-
 table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  tr:hover {background-color: slateblue;}
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: slateblue;
+}
+
+.user-table {
+  padding-left: 50px;
+  width: 100%;
+}
+
+#userTable{
+  width: 90%;
+}
+
+.alert-table {
+  padding-left: 50px;
+  width: 100%;
+}
+
+#alertTable{
+  width: 90%;
+}
+.header{
+  padding-left: 50px;
+  margin-bottom: 50px;
+}
