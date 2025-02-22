@@ -1,5 +1,5 @@
 
-    fetch ('http://127.0.0.1:8000/alert')
+    fetch ('http://150.136.88.20:8000//alert')
         .then(response => response.json())
         .then(data => {
             //const latestEntry = data[data.length - 1]; // Get the last entry

@@ -46,7 +46,7 @@ function table(data){
 }
 
 
-fetch ('http://127.0.0.1:8000/alert-history')
+fetch ('http://150.136.88.20:8000/alert-history')
 .then(response => response.json())
 .then(data => {
     //const latestEntry = data[data.length - 1]; // Get the last entry
