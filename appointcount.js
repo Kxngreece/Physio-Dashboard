@@ -1,5 +1,5 @@
 
-fetch ('http://150.136.88.20:8000//appointments')
+fetch ('http://150.136.88.20:8000/appointments')
 .then(response => response.json())
 .then(data => {
     //const latestEntry = data[data.length - 1]; // Get the last entry
