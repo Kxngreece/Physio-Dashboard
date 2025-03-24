@@ -1,0 +1,187 @@
+html,body{
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+   
+
+}
+
+#content{
+  flex-grow: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #004aad;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4A90E2;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f73726;
+}
+
+.alert-table {
+  width: 90%;
+  margin: 0 auto; /* Center the table */
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 400px;
+  margin-bottom: 20px;
+  overflow-y: auto;
+}
+
+/* Controls Container */
+.controls {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center; 
+  width: 90%; 
+  margin: 0 auto; 
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-bar input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px 0 0 20px; /* Rounded left corners */
+  font-size: 14px;
+  flex: 1;
+}
+
+.search-bar select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  background-color: #f9f9f9;
+  font-size: 14px;
+}
+
+.search-bar button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 0 20px 20px 0; /* Rounded right corners */
+  background-color: #4A90E2;
+  color: white;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #357ABD;
+}
+
+/* Date Range Picker */
+.date-range {
+  position: relative;
+  flex: 1;
+  max-width: 200px; /* Smaller width */
+}
+
+.date-range input {
+  padding: 8px 30px 8px 10px; /* Add padding for the icon */
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Rounded corners */
+  font-size: 14px;
+  width: 100%;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.date-range i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #4A90E2;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+/* Records per Page */
+.records-per-page {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 1500px;
+}
+
+.records-per-page select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Rounded corners */
+  font-size: 14px;
+}
+
+/* Flatpickr Calendar Overrides */
+.flatpickr-calendar {
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange {
+  background-color: #4A90E2;
+  border-color: #4A90E2;
+}
+
+.flatpickr-day.selected:hover, .flatpickr-day.startRange:hover, .flatpickr-day.endRange:hover {
+  background-color: #357ABD;
+  border-color: #357ABD;
+}
+
+/* Pagination Styles */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button.active {
+  background-color: #4A90E2;
+  color: white;
+  border-color: #4A90E2;
+}

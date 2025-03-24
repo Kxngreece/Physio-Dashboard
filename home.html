@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/c998d5e9cf.js" crossorigin="anonymous"></script>
     <title>HealStep Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
-    <link rel="stylesheet" href="sidebar.css">
+    <link rel="icon" href="Images/logo.png">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
     <script src="https://cdn.jsdelivr.net/npm/moment"></script>
@@ -17,48 +18,19 @@
   
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <div id="sidebarToggle" class="sidebarToggle">
-            <i class="fas fa-bars"></i>
-            <span>Menu</span>
-          </div>
-        <ul>
-            <li>
-                <a href="index.html">
-                  <i class="fas fa-home"></i>
-                  <span>Home</span>
-                </a>
-              </li>
-              <li>
-                <a href="activity.html">
-                  <i class="fas fa-chart-line"></i>
-                  <span>Activity</span>
-                </a>
-              </li>
-              <li>
-                <a href="user.html">
-                  <i class="fas fa-user"></i>
-                  <span>Users</span>
-                </a>
-              </li>
-              <li>
-                <a href="alert.html">
-                  <i class="fas fa-bell"></i>
-                  <span>Alerts</span>
-                </a>
-              </li>
-                <li>
-                    <a href="settings.html">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                    </a>
-              <li>
-                <a href="logout.html">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span>Logout</span>
-                </a>
-              </li>
-            </ul>
-            <script src="sidebar.js"></script>
+      <div id="sidebarToggle" class="sidebarToggle">
+          <i class="fas fa-bars"></i>
+          <span>Menu</span>
+      </div>
+      <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i><span>Home</span></a></li>
+          <li><a href="activity.html"><i class="fas fa-chart-line"></i><span>Activity</span></a></li>
+          <li><a href="user.html"><i class="fas fa-user"></i><span>Users</span></a></li>
+          <li><a href="alert.html"><i class="fas fa-bell"></i><span>Alerts</span></a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+          <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+      </ul>
+            <script src="javascript/sidebar.js"></script>
           </div>
     </div>
     <!-- End of Sidebar -->
@@ -84,7 +56,7 @@
                         <div class="card-icon"><i class="fas fa-calendar"></i></div>
                         <div class="card-value" id="appoint_counter"></div>
                         <div class="card-label">Appointments</div>
-                        <script src = "appointcount.js"></script>
+                        <script src = "javascript/appointcount.js"></script>
                     </div>
                     <div class="overview-card">
                         <div class="card-icon"><i class="fas fa-download"></i></div>
@@ -94,11 +66,13 @@
                 </div>
     
         </div>
-        <div class="actgraph">
+        <div class = "main-grid">
+      
+          <div class="actgraph">
                 <div class="activity-container">
                     <h2>Activity Over Time</h2>
                     <canvas id="timescalechart"></canvas>
-                    <script src="timescalechart.js"></script>
+                    <script src="javascript/timescalechart.js"></script>
                 </div>
            <div class="charts">
                     <div class="doughnut-chart">
@@ -109,7 +83,7 @@
                       <h3>Daily Progression</h3>
                       <canvas id="doughnutChart2"></canvas>
                     </div>
-                    <script src="chart.js"></script>
+                    <script src="javascript/chart.js"></script>
                   </div>
             </div>  
         </div>
@@ -121,7 +95,7 @@
     </div>
     </div>
     </div>
-    <script src="sidebar.js"></script>
+    <script src="javascript/sidebar.js"></script>
 
     
    

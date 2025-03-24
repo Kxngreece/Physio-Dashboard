@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knee Sync</title>
+    <script src="https://kit.fontawesome.com/c998d5e9cf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="Images/logo.png">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div id="dashboard">
+        <div id="loginDash">
+            <div class="loginform">
+                <form id="form">
+                    <div class="displayIcon">
+                        <img src="images/logo.png" alt="Logo" class="logo">
+                    </div>
+                    <span class="loginTitle">Login</span>
+                    
+                    <p id="errorMessage"></p>
+                    <div class="credentials">
+                        Username/Email
+                        <div class="input-container">
+                            <label for="username">
+                               <i class="fas fa-user"></i>
+                            </label>
+                            <input type="text" name="username" id="username" placeholder="Please Enter Username" required>
+                        </div>
+                         Password
+                        <div class="input-container">
+                            <label for="password">
+                                <i class="fas fa-lock"></i>
+                            </label>
+                            <input type="password" name="password" id="password" placeholder="Please Enter Password" required>
+                            <span class="toggle-password" id="togglePassword">
+                               
+                            </span>
+                        </div>
+                        <div class="loginButton">
+                            <button type="submit" id="loginButton">Login</button>
+                        </div>
+                    </div>
+                    <p>New here? <a href="signup.html">Create an Account</a></p>
+                </form>
+                
+            </div>
+            <script src="javascript/login.js"></script> 
+        </div>
+    </div>
+</body>
+</html>

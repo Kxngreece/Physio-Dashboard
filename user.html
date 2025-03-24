@@ -4,76 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/c998d5e9cf.js" crossorigin="anonymous"></script>
-    <title>Users</title>
-    <link rel="stylesheet" href="tables.css">
-    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="icon" href="Images/logo.png">
+    <title>User</title>
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
 </head>
 <body>
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div id="sidebarToggle" class="sidebarToggle">
             <i class="fas fa-bars"></i>
             <span>Menu</span>
-          </div>
+        </div>
         <ul>
             <li>
                 <a href="index.html">
-                  <i class="fas fa-home"></i>
-                  <span>Home</span>
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
                 </a>
-              </li>
-              <li>
+            </li>
+            <li>
                 <a href="activity.html">
-                  <i class="fas fa-chart-line"></i>
-                  <span>Activity</span>
+                    <i class="fas fa-chart-line"></i>
+                    <span>Activity</span>
                 </a>
-              </li>
-              <li>
+            </li>
+            <li>
                 <a href="profile.html">
-                  <i class="fas fa-user"></i>
-                  <span>Users</span>
+                    <i class="fas fa-user"></i>
+                    <span>Users</span>
                 </a>
-              </li>
-              <li>
+            </li>
+            <li>
                 <a href="alert.html">
-                  <i class="fas fa-bell"></i>
-                  <span>Alerts</span>
+                    <i class="fas fa-bell"></i>
+                    <span>Alerts</span>
                 </a>
-              </li>
-                <li>
-                    <a href="settings.html">
+            </li>
+            <li>
+                <a href="settings.html">
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
-                    </a>
-              <li>
-                <a href="logout.html">
-                  <i class="fas fa-sign-out-alt"></i>
-                  <span>Logout</span>
                 </a>
-              </li>
-            </ul>
-            <script src="sidebar.js"></script>
-          </div>
+            </li>
+            <li>
+                <a href="logout.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+        <script src="javascript/sidebar.js"></script>
     </div>
 
-    <div id = "content">
-        <div class = "header">
-            <h1>Users</h1>
+    
+    <div id="content">
+        <div class="header">
+            <h1>User</h1>
         </div>
-        <div class = "user-table">
+        <div class="controls">
+            
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Search...">
+                <select id="searchFilter">
+                    <option value="all">All</option>
+                    <option value="braceId">Brace ID</option>
+                    <option value="alertCode">Alert Code</option>
+                    <option value="message">Message</option>
+                    <option value="time">Time</option>
+                </select>
+                <button onclick="filterTable()"><i class="fas fa-search"></i></button>
+            </div>
+
+
+            <div class="date-range">
+                <input type="text" id="dateRange" placeholder="Date Range">
+        
+                
+                
+            </div>
+
+            
+            <div class="records-per-page">
+                <label for="recordsPerPage">Records per page:</label>
+                <select id="recordsPerPage" onchange="changePageSize()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+        </div>
+        <div class="user-table">
             <table id="userTable">
                 <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Brace ID</th>
-                    <th>Email</th>
-
-                </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Brace Id</th>
+                        <th>Email</th>
+                    </tr>
                 </thead>
                 <tbody>
-
+                   
                 </tbody>
-                <script src="userhistory.js"></script>
             </table>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="javascript/alertTable.js"></script>
 </body>
 </html>

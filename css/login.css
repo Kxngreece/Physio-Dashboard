@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+HTML, body{
+    
+    background-color: #4A90E2;
+    color: #333333;
+    font-family: Poppins, Segoe UI, sans-serif;
+    font-size: 16px;
+    background-image: url("../Images/login.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:100%;
+    margin: 0 ;
+    overflow: hidden;
+}
+
+#dashboard{
+    display:table; 
+    height:100%; 
+    margin: 0 auto;
+  
+}
+
+#loginDash{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    display:table-cell; 
+    vertical-align:middle;
+}
+
+.loginform {
+    width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+    height: fit-content;
+    padding: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #636363;
+}
+.loginTitle{
+    display: block;
+    font-family: Poppins-Bold;
+    text-transform: uppercase;
+    font-size: 39px;
+    font-weight: 900;
+    color: #1C3F60;
+    line-height: 1.2;
+    text-align: center;
+    padding-bottom:10px;
+}
+
+.displayIcon {
+    text-align: center;
+    margin: 0 0 15px 0;
+    }
+    
+    img.logo {
+    width: 30%;
+    border-radius: 40%;
+    }
+.credentials {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+.credentials > div{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+.credentials label{
+      flex-shrink: 0;
+      height: 50px;
+      width: 50px;
+  background-color:#4A90E2;
+      fill: whitesmoke;
+      color: whitesmoke;
+      border-radius: 10px 0 0 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+.credentials input{
+      box-sizing: border-box;
+      flex-grow: 1;
+      min-width: 0;
+      height: 50px;
+      padding: 1em;
+      font: inherit;
+      border-radius: 0 10px 10px 0;
+      border: 2px solid #F0F0F0;
+      border-left: none;
+      background-color: #F0F0F0;
+      transition: 150ms ease;
+    }    
+
+.credentials input:hover{
+   border-color: #1C3F60;
+   }
+.credentials input :focus{
+  outline: none;
+  border-color:  #4A90E2;
+  ;
+ }
+
+
+.credentials div:has(input:focus) > label{
+ background-color: #1C3F60;
+  }
+
+
+.credentials::placeholder{
+ color: #3333;
+ }
+
+.loginButton {
+  margin-top: 10px;
+}
+.loginButton button {
+  border: none;
+  border-radius: 1000px;
+  padding: .85em 4em;
+  background-color: #f73726;
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+
+.loginButton button:hover{
+background-color: #FFD700;
+    }
+.loginButton:focus{
+outline: none;
+background-color: #FFD700;
+    }
+a{
+      text-decoration: none;
+      color: #4A90E2;
+    
+  }
+a:hover{
+      text-decoration: underline;
+    }
+
+
+@media(max-width: 1100px){
+    #loginDash{
+      width: min(600px, 100%);
+      border-radius: 0;
+    }
+  }
+.credentials.incorrect label{
+    background-color: #f73726;
+  }
+.credentials.incorrect input{
+    border-color: #f73726;
+  }
+#error-message{
+    color:#f73726;
+  }

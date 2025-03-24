@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c998d5e9cf.js" crossorigin="anonymous"></script>
+    <title>HealStep Dashboard</title>
+    <link rel="icon" href="Images/logo.png">
+    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>  
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div id="sidebarToggle" class="sidebarToggle">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i><span>Home</span></a></li>
+            <li><a href="activity.html"><i class="fas fa-chart-line"></i><span>Activity</span></a></li>
+            <li><a href="user.html"><i class="fas fa-user"></i><span>Users</span></a></li>
+            <li><a href="alert.html"><i class="fas fa-bell"></i><span>Alerts</span></a></li>
+            <li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+            <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Header -->
+        <header>
+            <h1>HealStep Dashboard</h1>
+        </header>
+
+        <!-- Overview Grid -->
+        <div class="overview-grid">
+            <div class="overview-card">
+                <div class="card-icon"><i class="fas fa-hospital"></i></div>
+                <div class="card-value">27</div>
+                <div class="card-label">Hospital Patients</div>
+            </div>
+            <div class="overview-card">
+                <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
+                <div class="card-value">9</div>
+                <div class="card-label">Acute Consultations</div>
+            </div>
+            <div class="overview-card">
+                <div class="card-icon"><i class="fas fa-flask"></i></div>
+                <div class="card-value">19</div>
+                <div class="card-label">Laboratory Work</div>
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Knee Rotation Chart -->
+                <div class="knee-rotation">
+                    <h2>Knee Rotation</h2>
+                    <canvas id="kneeRotationChart"></canvas>
+                </div>
+
+                <!-- Scheduled Events -->
+                <div class="scheduled-events">
+                    <h2>Scheduled Events</h2>
+                    <ul>
+                        <li><strong>25</strong> Consultations</li>
+                        <li><strong>10</strong> Laboratory Work</li>
+                        <li><strong>3</strong> Meetings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Calendar -->
+                <div class="calendar">
+                    <h2>Calendar</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sun</th>
+                                <th>Mon</th>
+                                <th>Tue</th>
+                                <th>Wed</th>
+                                <th>Thu</th>
+                                <th>Fri</th>
+                                <th>Sat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Today's Schedule -->
+                <div class="today-schedule">
+                    <h2>Today</h2>
+                    <ul>
+                        <li><strong>2:00 PM</strong> Meeting with Dr. Williams</li>
+                        <li><strong>1:30 PM</strong> Consultation with Mr. White</li>
+                        <li><strong>3:00 PM</strong> Consultation with Mrs. Maisy</li>
+                        <li><strong>3:50 PM</strong> Examination of Mrs. León</li>
+                        <li><strong>4:00 PM</strong> Meeting with Dr. Allen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="javascript/sidebar.js"></script>
+    <script src="javascript/chart.js"></script>
+</body>
+</html>
