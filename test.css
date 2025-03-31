@@ -4,7 +4,7 @@ html, body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f9;
-    color: #333;
+    color:  #333;
     overflow-y: auto;
     scroll-behavior: smooth;
 }
@@ -90,7 +90,7 @@ header h1 {
 }
 
 /* Scheduled Events */
-.scheduled-events {
+.scheduled-e {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -144,25 +144,49 @@ header h1 {
 }
 
 /* Today's Schedule */
-.today-schedule {
+.update {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.today-schedule h2 {
+.update h2 {
     font-size: 1.5rem;
     color: #004aad;
     margin-bottom: 20px;
 }
 
-.today-schedule ul {
+.update ul {
     list-style: none;
     padding: 0;
 }
 
-.today-schedule li {
+.update li {
     font-size: 1rem;
     margin-bottom: 10px;
+}
+
+.footer {
+    background-color: #f4f4f9;
+    color: #333; ;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    align-items: left;
+    gap: 10px;
+}
+
+.footer-logo {
+    width: 30px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
 }
