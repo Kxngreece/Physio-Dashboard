@@ -4,7 +4,7 @@ let recordsPerPage = 5;
 let selectedDates = []; 
 
 // Fetch data from the database
-fetch('http://129.213.50.21:8000/alerts')
+fetch('https://129.213.50.21:8000/alerts')
     .then(response => response.json())
     .then(fetchedData => {
         data = fetchedData; 
@@ -31,7 +31,7 @@ function populateTable(data) {
     } else {
         data.forEach(row => {
             const tr = document.createElement("tr");
-            
+
             const dateObj = new Date(row.time_stamp);
             const date = dateObj.toISOString().split("T")[0]; // YYYY-MM-DD
             const time = dateObj.toLocaleTimeString("en-US", { hour12: false }); // HH:MM:SS
