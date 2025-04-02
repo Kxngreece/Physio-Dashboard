@@ -4,7 +4,7 @@ let recordsPerPage = 5;
 let selectedDates = []; 
 
 // Fetch data from the database
-fetch('https://129.213.50.21:8000/alerts')
+fetch('https://api.kneesync.com/alerts')
     .then(response => response.json())
     .then(fetchedData => {
         data = fetchedData; 
