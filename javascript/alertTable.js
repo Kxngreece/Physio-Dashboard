@@ -117,10 +117,6 @@ flatpickr("#dateRange", {
 updateTable();
 
 
-function populateTable(data) {
-    const tableBody = document.querySelector("#alertTable tbody");
-    tableBody.innerHTML = ""; // Clear existing rows
-  
-   
-  }
-  
+
+// Add event listeners for search and filter inputs
+document.getElementById("search").addEventListener("input", filterTable);   
