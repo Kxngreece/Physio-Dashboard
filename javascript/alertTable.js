@@ -1,12 +1,18 @@
 let data = []; // This will store the fetched data
 let currentPage = 1;
-let recordsPerPage = 5;
+let recordsPerPage = 10; // Default value changed to 10
 let selectedDates = [];
 
 // Fetch data from the database
 fetch("https://api.kneesync.com/alerts")
   .then((response) => response.json())
   .then((fetchedData) => {
+    // Sort the data: newest to oldest using date_stamp and time_stamp
+    fetchedData.sort((a, b) => {
+      const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
+      const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
+      return dateB - dateA; // descending order
+    });
     data = fetchedData;
     updateTable();
   })
@@ -39,7 +45,7 @@ function populateTable(data) {
       tableBody.appendChild(tr);
     });
   }
-  }
+}
 
 // Function to update pagination buttons
 function updatePagination(totalPages) {
@@ -83,7 +89,9 @@ function filterTable() {
           )
         : String(row[searchFilter]).toLowerCase().includes(searchTerm);
 
-    const rowTime = new Date(row.time_stamp);
+    // Combine date_stamp and time_stamp to create a full timestamp
+    const fullTimestamp = `${row.date_stamp}T${row.time_stamp}`;
+    const rowTime = new Date(fullTimestamp);
     const matchesDate =
       selectedDates.length === 2
         ? rowTime >= selectedDates[0] && rowTime <= selectedDates[1]
@@ -103,6 +111,7 @@ function changePageSize() {
   updateTable();
 }
 
+// Initialize flatpickr for date range filtering
 flatpickr("#dateRange", {
   mode: "range",
   dateFormat: "Y-m-d",
@@ -114,9 +123,16 @@ flatpickr("#dateRange", {
   },
 });
 
+// Initial table update call
 updateTable();
 
-
-
-// Add event listeners for search and filter inputs
-document.getElementById("search").addEventListener("input", filterTable);   
+// Add event listener for search input
+document.getElementById("search").addEventListener("input", filterTable);
+// Add event listener for search filter dropdown
+document
+  .getElementById("searchFilter")
+  .addEventListener("change", filterTable);
+// Add event listener for records per page dropdown
+document
+  .getElementById("recordsPerPage")
+  .addEventListener("change", changePageSize);  
