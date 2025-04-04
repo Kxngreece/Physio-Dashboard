@@ -1,5 +1,5 @@
 
-    fetch ('http://http://129.213.50.21:8000/alert')
+    fetch ('http://http://api.kneesync.com/alerts')
         .then(response => response.json())
         .then(data => {
             //const latestEntry = data[data.length - 1]; // Get the last entry
