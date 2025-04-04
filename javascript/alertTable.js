@@ -29,22 +29,18 @@ function populateTable(data) {
   } else {
     data.forEach((row) => {
       const tr = document.createElement("tr");
-
-      const dateObj = new Date(row.time_stamp);
-      const date = dateObj.toISOString().split("T")[0]; // YYYY-MM-DD
-      const time = dateObj.toLocaleTimeString("en-US", { hour12: false }); // HH:MM:SS
       tr.innerHTML = `
-                <td>${row.brace_id}</td>
-                <td>${row.type}</td>
-                <td>${row.message}</td>
-                <td>${row.date_stamp}</td>
-                <td>${row.time_stamp}</td>
-                
-            `;
+        <td>${row.brace_id}</td>
+        <td>${row.type}</td>
+        <td>${row.message}</td>
+        <td>${row.date_stamp}</td>
+        <td>${row.time_stamp}</td>
+      `;
       tableBody.appendChild(tr);
     });
   }
-}
+  }
+
 // Function to update pagination buttons
 function updatePagination(totalPages) {
   const pagination = document.getElementById("pagination");
@@ -119,3 +115,12 @@ flatpickr("#dateRange", {
 });
 
 updateTable();
+
+
+function populateTable(data) {
+    const tableBody = document.querySelector("#alertTable tbody");
+    tableBody.innerHTML = ""; // Clear existing rows
+  
+   
+  }
+  
