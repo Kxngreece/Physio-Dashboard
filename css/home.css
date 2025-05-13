@@ -1,0 +1,332 @@
+/* General Body Styles */
+html {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Ensure Poppins font is linked or available */
+    background-color: #f7f8fc;
+    color: #333;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+/* Content Area */
+#content {
+
+    min-height: 100vh;
+    box-sizing: border-box;
+    flex-grow: 0;
+    overflow-y: auto;
+    padding: 25px;
+    transition: margin-left 0.3s ease;
+}
+  
+
+.sidebar.collapsed ~ #content {
+    margin-left: 60px; 
+}
+
+.dashboard {
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: -65px;
+  background-color: #F6F5F5;
+  box-shadow: 10px 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Device Selector */
+.device-selector {
+    display: flex;
+    align-items: center;
+}
+
+.device-selector label {
+    margin-right: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.device-selector select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Overview Grid */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.overview-card {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.overview-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.overview-card .card-icon {
+    font-size: 24px;
+    color: #007bff; /* Primary color */
+    margin-bottom: 8px;
+}
+.overview-card:nth-child(2) .card-icon { color: #28a745; } /* Green for connected */
+.overview-card:nth-child(3) .card-icon { color: #ffc107; } /* Amber for alerts */
+
+.overview-card .card-value {
+    font-size: 1.5rem;
+    font-weight: 600; /* Semi-bold */
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.overview-card .card-label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Main Grid Layout */
+.main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Main content wider than sidebar content */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Card Base Styles */
+.knee-angle-card,
+.muscle-activity-card,
+.alerts-card,
+.feedback-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+}
+
+/* Card Headers */
+.knee-angle-card h2,
+.muscle-activity-card h2,
+.alerts-card h2,
+.feedback-card h2 {
+    font-size: 1.1rem; /* Slightly smaller headings */
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    
+
+}
+
+/* Knee Angle Specific */
+.knee-angle-display {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.knee-angle-value {
+    font-size: 3rem; /* Larger angle value */
+    font-weight: bold;
+    color: #007bff;
+    line-height: 1;
+}
+
+.knee-angle-unit {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+#kneeRotationChartCanvas {
+    width: 100%;
+    max-width: 120px;
+    max-height: 180px;
+    margin: 0 auto;
+}
+
+/* Muscle Activity Specific */
+.muscle-activity-chart {
+    width: 100%;
+    display: block;
+
+}
+
+.muscle-activity-card{
+     background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    padding: 35px;
+    height: 250px;
+    overflow: hidden;
+}
+/* Alerts Table Specific */
+.alerts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.alerts-table th,
+.alerts-table td {
+    padding: 10px 5px; /* Adjust padding */
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 0.85rem; /* Smaller font for table */
+    vertical-align: middle;
+}
+
+.alerts-table th {
+    font-weight: 600; /* Semi-bold */
+    color: #555;
+}
+
+.alerts-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.alerts-table td:nth-child(1) { width: 25%; } /* Adjust column widths */
+.alerts-table td:nth-child(2) { width: 50%; }
+.alerts-table td:nth-child(3) { width: 25%; text-align: right; color: #888; }
+
+.view-all-link {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.view-all-link:hover {
+    text-decoration: underline;
+}
+
+
+/* Feedback Card Specific */
+.feedback-content {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+    background-color: #f7f8fc; /* Match content background */
+    color: #888;
+    text-align: center;
+    padding: 10px 15px;
+    margin-top: 20px; /* Add space above footer */
+    border-top: 1px solid #eee;
+    width: calc(100% - 220px); /* Adjust width based on sidebar */
+    position: relative; /* Or fixed if you want it sticky */
+    bottom: 0;
+    left: 220px; /* Match sidebar width */
+    box-sizing: border-box;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.sidebar.collapsed ~ .footer {
+    width: calc(100% - 60px); /* Adjust for collapsed sidebar */
+    left: 60px; /* Match collapsed sidebar width */
+}
+
+
+.footer-content {
+    display: flex;
+    align-items: right;
+    justify-content: right; /* Center footer content */
+    gap: 10px;
+}
+
+.footer-logo {
+    width: 25px;
+    height: 25px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .main-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+    }
+
+    #content {
+        margin-left: 60px; /* Adjust for collapsed sidebar on smaller screens */
+    }
+
+    .footer {
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+    .sidebar:not(.collapsed) ~ #content { /* If sidebar is forced open */
+         margin-left: 220px;
+    }
+     .sidebar:not(.collapsed) ~ .footer {
+         width: calc(100% - 220px);
+         left: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .device-selector {
+        width: 100%;
+        justify-content: flex-start; /* Align selector left */
+    }
+
+     /* Further adjustments if sidebar collapses fully */
+    #content {
+        margin-left: 0; /* No margin if sidebar is hidden or overlayed */
+        padding: 15px;
+    }
+     .footer {
+         width: 100%;
+         left: 0;
+     }
+    /* Add sidebar specific styles for collapsing/overlaying on mobile if needed */
+}
