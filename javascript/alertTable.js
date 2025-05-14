@@ -1,6 +1,6 @@
-let data = []; // This will store the fetched data
+let data = []; 
 let currentPage = 1;
-let recordsPerPage = 10; // Default value changed to 10
+let recordsPerPage = 10; 
 let selectedDates = [];
 
 // Fetch data from the database
@@ -123,7 +123,6 @@ flatpickr("#dateRange", {
   },
 });
 
-// Initial table update call
 updateTable();
 
 // Add event listener for search input

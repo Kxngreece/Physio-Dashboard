@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const alertsTableBody = document.getElementById('alertsTableBody');
     const feedbackContentElement = document.getElementById('feedbackContent');
 
-    // Check if canvas contexts exist before creating charts
+
     if (!kneeRotationCanvas || !muscleActivityCanvas) {
         console.error("Could not find canvas elements for charts.");
         return; 
@@ -133,34 +133,70 @@ document.addEventListener('DOMContentLoaded', () => {
         // updateFeedback();
     }
 
-    // --- Function to Update Alerts Table (Simulated) ---
-    function updateAlertsTable() {
-        // This is a basic example. In a real app, fetch data.
+    // --- Function to Update Alerts Table  ---
+    async function updateAlertsTable() {
+        const alertEndpoint = 'https://api.kneesync.com/alerts';
         const maxAlertsToShow = 3;
-        if (alertsTableBody && Math.random() < 0.1) { // Randomly add a new alert sometimes
-            const newRow = document.createElement('tr');
-            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const types = ['Over-rotation', 'Low Battery', 'Connection Lost'];
-            const messages = ['Exceeded safe angle.', 'Charge device soon.', 'Check device connection.'];
-            const randomIndex = Math.floor(Math.random() * types.length);
+        const recentAlertsValue = document.getElementById('recentAlertsValue');
 
-            newRow.innerHTML = `
-                <td>${types[randomIndex]}</td>
-                <td>${messages[randomIndex]}</td>
-                <td>${time}</td>
-            `;
-            alertsTableBody.insertBefore(newRow, alertsTableBody.firstChild); // Add to top
+        if (!alertsTableBody || !recentAlertsValue) {
+            console.error("Required elements missing!");
+            return;
+        }
 
-            // Remove oldest if more than max alerts
-            while (alertsTableBody.rows.length > maxAlertsToShow) {
-                alertsTableBody.deleteRow(alertsTableBody.rows.length - 1);
+        try {
+            const response = await fetch(alertEndpoint);
+            
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ detail: "Unknown server error" }));
+                throw new Error(`HTTP error! status: ${response.status} - ${errorData.detail}`);
             }
 
-            // Update overview card count (optional)
-            const recentAlertsValue = document.getElementById('recent-alerts-value');
-            if(recentAlertsValue) recentAlertsValue.textContent = alertsTableBody.rows.length;
+            const alerts = await response.json();
+            alertsTableBody.innerHTML = '';
+
+            if (alerts?.length > 0) {
+                // Sort alerts by date and time (newest first)
+                const sortedAlerts = alerts.sort((a, b) => 
+                    new Date(`${b.date_stamp}T${b.time_stamp}`) - 
+                    new Date(`${a.date_stamp}T${a.time_stamp}`)
+                );
+
+                sortedAlerts.slice(0, maxAlertsToShow).forEach(alert => {
+                    const row = document.createElement('tr');
+                    const time = new Date(`${alert.date_stamp}T${alert.time_stamp}`);
+                    
+                    row.innerHTML = `
+                        <td>${alert.type || 'N/A'}</td>
+                        <td>${alert.message || 'No message'}</td>
+                        <td>${time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                    `;
+                    alertsTableBody.appendChild(row);
+                });
+
+                recentAlertsValue.textContent = Math.min(alerts.length, maxAlertsToShow);
+            } else {
+                this.handleNoAlerts(alertsTableBody, recentAlertsValue);
+            }
+        } catch (error) {
+            console.error("Failed to update alerts:", error);
+            this.handleErrorState(alertsTableBody, recentAlertsValue);
         }
     }
+
+    // Helper functions
+    function handleNoAlerts(tableBody, countElement) {
+        tableBody.innerHTML = `<tr><td colspan="3" class="text-center">No recent alerts</td></tr>`;
+        countElement.textContent = 0;
+    }
+
+    function handleErrorState(tableBody, countElement) {
+        tableBody.innerHTML = `<tr><td colspan="3" class="text-center error">Error loading alerts</td></tr>`;
+        countElement.textContent = '—';
+    }
+
+setInterval(updateAlertsTable, 5000);
+updateAlertsTable();
 
     // --- Function to Update Feedback (Simulated) ---
     function updateFeedback() {
@@ -181,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateInterval = 2000; // Update every 2 seconds (adjust as needed)
     setInterval(updateDashboardData, updateInterval);
 
-    // --- Event Listener for Device Selector (Example) ---
+    
     const deviceSelector = document.getElementById('device');
     if (deviceSelector) {
         deviceSelector.addEventListener('change', (event) => {
@@ -191,8 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // For simulation, you could reset the charts or change some visual element
             currentKneeAngle = Math.floor(Math.random() * 180); // Reset angle on device change
             muscleActivityChart.data.datasets[0].data = initialMuscleData.map(() => Math.random() * 500 + 500); // Reset muscle data
-            updateDashboardData(); // Update display immediately
+            updateDashboardData(); 
         });
     }
 
-}); // End DOMContentLoaded
+});
