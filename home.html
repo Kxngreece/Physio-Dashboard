@@ -28,7 +28,7 @@
             <li><a href="user.html"><i class="fas fa-user"></i><span>Users</span></a></li>
             <li><a href="alert.html"><i class="fas fa-bell"></i><span>Alerts</span></a></li>
             <li><a href="settings.html"><i class="fas fa-cog"></i><span>Settings</span></a></li>
-            <li><a href="logout.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+            <li><a href="index.html"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
         </ul>
     </div>
     <div id="content">
@@ -37,10 +37,15 @@
             <div class="device-selector">
                 <label for="device">Observing Device:</label>
                 <select id="device">
-                    <option value="device1">Device 1</option>
-                    </select>
+                    <option value="">Loading devices...</option> 
+                </select>
             </div>
         </header>
+        <div id = "data-error">
+            <p id="error-message">Error: Unable to fetch data. Please check your connection.</p>
+        </div>
+        <div id="data-loading">
+            <p id="loading-message">Loading data...</p>
 
         <div class="overview-grid">
             <div class="overview-card">
@@ -54,7 +59,7 @@
             </div>
             <div class="overview-card">
                 <div class="card-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                <div class="card-value" id="recent-alerts-value">2</div> <div class="card-label">Recent Alerts</div>
+                <div class="card-value" id="recentAlertsValue">2</div> <div class="card-label">Recent Alerts</div>
             </div>
             </div>
 

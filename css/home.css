@@ -245,6 +245,32 @@ header h1 {
     line-height: 1.6;
 }
 
+.loading {
+    opacity: 0.6;
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+#data-error {
+    color: #c0392b; /* A darker red for text */
+    background-color: #fdecea;
+    border: 1px solid #e2b1b6;
+    text-align: center;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    display: none; /* Hidden by default */
+    font-weight: 500;
+}
+
+#data-error.critical-error { 
+    background-color: #e74c3c;
+    color: white;
+    border-color: #c0392b;
+}
 /* Footer */
 .footer {
     background-color: #f7f8fc; /* Match content background */
