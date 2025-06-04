@@ -4,22 +4,37 @@
         let recordsPerPage = 10; 
         let selectedDates = [];
 
-        fetch("https://api.kneesync.com/knee-brace")
-          .then((response) => response.json())
-          .then((fetchedData) => {
-            // Sort the data: newest to oldest using 
-            fetchedData.sort((a, b) => {
-              const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
-              const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
-              return dateB - dateA; // descending order
-            });
-            originalData = fetchedData; 
-            filteredData = [...fetchedData]; 
-            updateTable();
-          })
-          .catch((error) => {
-            console.error("Error fetching data:", error);
+      
+       fetch("https://api.kneesync.com/knee-brace")
+        .then((response) => response.json())
+        .then((fetchedData) => {
+          
+          const transformedData = fetchedData.map(item => {
+            const timestamp = new Date(item.timestamp);
+            return {
+              brace_id: item.brace_id,
+              angle: item.angle,
+              emg_reading: item.muscle_reading,  // Map muscle_reading to emg_reading
+              date_stamp: timestamp.toISOString().split('T')[0],  // YYYY-MM-DD
+              time_stamp: timestamp.toTimeString().split(' ')[0]  // HH:MM:SS
+            };
           });
+          
+          // Sort the data: newest to oldest
+          transformedData.sort((a, b) => {
+            const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
+            const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
+            return dateB - dateA;
+          });
+    
+          originalData = transformedData;
+          filteredData = [...transformedData];
+          updateTable();
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+              
 
         function populateTable(data) {
           const tableBody = document.querySelector("#activityTable tbody");
@@ -77,7 +92,7 @@
           updatePagination(Math.ceil(filteredData.length / recordsPerPage));
         }
 
-        // Function to filter the table based on search and date range
+      
         function filterTable() {
           const searchTerm = document.getElementById("search").value.toLowerCase();
           const searchFilter = document.getElementById("searchFilter").value;
