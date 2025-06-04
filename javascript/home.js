@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const UPDATE_INTERVALS = {
         dashboard: 2000,
-        alerts: 5000,
+        alerts: 4000,
         feedback: 30000,
     };
     const MUSCLE_HISTORY_LENGTH = 6;
@@ -195,49 +195,51 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateFeedback, UPDATE_INTERVALS.feedback);
 
     // --- Alerts Table Functions ---
-    async function updateAlertsTable() {
-        if (!elements.alertsTableBody || !elements.recentAlertsValue) {
-            console.error("Required elements missing!");
-            return;
-        }
-
-        try {
-            const response = await fetch(ENDPOINTS.alerts);
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
-            
-            const alerts = await response.json();
-            elements.alertsTableBody.innerHTML = '';
-
-            if (alerts?.length > 0) {
-                const sortedAlerts = alerts.sort((a, b) => 
-                    new Date(`${b.date_stamp}T${b.time_stamp}`) - 
-                    new Date(`${a.date_stamp}T${a.time_stamp}`)
-                );
-
-                const maxAlertsToShow = 3;
-                sortedAlerts.slice(0, maxAlertsToShow).forEach(alert => {
-                    const row = document.createElement('tr');
-                    const time = new Date(`${alert.date_stamp}T${alert.time_stamp}`);
-                    
-                    row.innerHTML = `
-                        <td>${alert.type || 'N/A'}</td>
-                        <td>${alert.message || 'No message'}</td>
-                        <td>${time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
-                    `;
-                    elements.alertsTableBody.appendChild(row);
-                });
-
-                elements.recentAlertsValue.textContent = Math.min(alerts.length, maxAlertsToShow);
-            } else {
-                handleNoAlerts();
-            }
-        } catch (error) {
-            console.error("Failed to update alerts:", error);
-            handleErrorState(error.message);
-        }
+   async function updateAlertsTable() {
+    if (!elements.alertsTableBody || !elements.recentAlertsValue) {
+        console.error("Required elements missing!");
+        return;
     }
 
-    function handleNoAlerts() {
+    try {
+        const response = await fetch(ENDPOINTS.alerts);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        
+        const alerts = await response.json();
+        elements.alertsTableBody.innerHTML = '';
+
+        if (alerts?.length > 0) {
+            
+            alerts.sort((a, b) => {
+                const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
+                const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
+                return dateB - dateA; 
+            });
+
+            const maxAlertsToShow = 3;
+        
+            alerts.slice(0, maxAlertsToShow).forEach(alert => {
+                const row = document.createElement('tr');
+                const time = new Date(`${alert.date_stamp}T${alert.time_stamp}`);
+                
+                row.innerHTML = `
+                    <td>${alert.type || 'N/A'}</td>
+                    <td>${alert.message || 'No message'}</td>
+                    <td>${time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                `;
+                elements.alertsTableBody.appendChild(row);
+            });
+
+            elements.recentAlertsValue.textContent = Math.min(alerts.length, maxAlertsToShow);
+        } else {
+            handleNoAlerts();
+        }
+    } catch (error) {
+        console.error("Failed to update alerts:", error);
+    handleErrorState(error.message);
+}
+
+function handleNoAlerts() {
         elements.alertsTableBody.innerHTML = `<tr><td colspan="3" class="text-center">No recent alerts</td></tr>`;
         elements.recentAlertsValue.textContent = 0;
     }
@@ -292,7 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         feedbackItemDiv.appendChild(feedbackTimeP);
                         elements.feedbackContent.appendChild(feedbackItemDiv);
                     }
-                });
+                }
+                );
             } else {
                 elements.feedbackContent.textContent = "No feedback available at the moment.";
             }
@@ -301,4 +304,5 @@ document.addEventListener('DOMContentLoaded', () => {
             elements.feedbackContent.innerHTML = `<p class="error-text">Error loading feedback: ${error.message}</p>`;
         }
     }
+}
 });

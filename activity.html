@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c998d5e9cf.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="icon" href="Images/logo.png">
+    <title>Activity</title>
+    <link rel="stylesheet" href="css/tables.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/activity.css">
+    <link rel="stylesheet" href="css/settings.css">
+    
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div id="sidebarToggle" class="sidebarToggle">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </div>
+        <ul>
+            <li>
+                <a href="home.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="activity.html">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Activity</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <i class="fas fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li>
+                <a href="alert.html">
+                    <i class="fas fa-bell"></i>
+                    <span>Alerts</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+        <script src="javascript/sidebar.js"></script>
+    </div>
+
+    
+    <div id="content">
+        <header>
+            <h1>Activity</h1>
+        </header>
+        <div class="controls">
+            
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Search...">
+                <select id="searchFilter">
+                    <option value="all">All</option>
+                    <option value="brace_id">Brace ID</option>
+                    <option value="angle">Angle</option>
+                    <option value="emg_reading">EMG Reading</option>
+                    <option value="date_stamp">Date</option>
+                    <option value="time_stamp">Time</option>
+                </select>
+                <button onclick="filterTable()"><i class="fas fa-search"></i></button>
+            </div>
+
+
+            <div class="date-range">
+                <input type="text" id="dateRange" placeholder="Date Range">
+            </div>
+
+            
+            <div class="records-per-page">
+                <label for="recordsPerPage">Records per page:</label>
+                <select id="recordsPerPage" onchange="changePageSize()">
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </div>
+        <div class="alert-table">
+            <table id="activityTable">
+                <thead>
+                    <tr>
+                        <th>Brace ID</th>
+                        <th>Knee Angle</th>
+                        <th>EMG Reading</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+            <div class="pagination" id="pagination"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script scr = "javascript/activity.js"></script>  
+</body>
+</html>

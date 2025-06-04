@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KneeSync Settings</title>
+    <link rel="icon" href="Images/logo.png">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <div class="settings-overlay">
+        <div class="settings-popup">
+            <div class="settings-header">
+                <button class="close-btn" onclick="closeSettings()">&times;</button>
+                <h2>Device Settings</h2>
+                <p>Configure ROM thresholds for your KneeSync device</p>
+            </div>
+            
+            <div class="settings-body">
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="deviceSelect">Select Device</label>
+                        <select id="deviceSelect" class="form-select" required>
+                            <option value="">Loading devices...</option>
+                        </select>
+                    </div>
+
+                    <div class="current-settings" id="currentSettings" style="display: none;">
+                        <h4>Current Settings</h4>
+                        <div class="current-values">
+                            <div class="current-value">
+                                <div class="label">Lower Threshold</div>
+                                <div class="value" id="currentLower">--°</div>
+                            </div>
+                            <div class="current-value">
+                                <div class="label">Upper Threshold</div>
+                                <div class="value" id="currentUpper">--°</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>ROM Angle Thresholds</label>
+                        <div class="angle-inputs">
+                            <div class="angle-input-group">
+                                <input type="number" id="lowerThreshold" class="form-input" 
+                                       placeholder="Lower" min="0" max="180" step="0.1" required>
+                                <span class="angle-unit">°</span>
+                            </div>
+                            <div class="angle-input-group">
+                                <input type="number" id="upperThreshold" class="form-input" 
+                                       placeholder="Upper" min="0" max="180" step="0.1" required>
+                                <span class="angle-unit">°</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactInfo">Contact Information</label>
+                        <input type="text" id="contactInfo" class="form-input" 
+                               placeholder="Enter contact details" required>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeSettings()">
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="saveBtn">
+                            Save Settings
+                        </button>
+                    </div>
+
+                    <div id="statusMessage" class="status-message" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src ="javascript/settings.js"></script>
+</body>
+</html>

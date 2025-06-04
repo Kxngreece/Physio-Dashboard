@@ -1,4 +1,5 @@
-let data = []; 
+let originalData = []; 
+let filteredData = []; 
 let currentPage = 1;
 let recordsPerPage = 10; 
 let selectedDates = [];
@@ -7,13 +8,14 @@ let selectedDates = [];
 fetch("https://api.kneesync.com/alerts")
   .then((response) => response.json())
   .then((fetchedData) => {
-    // Sort the data: newest to oldest using date_stamp and time_stamp
+    // Sort the data: newest to oldest using 
     fetchedData.sort((a, b) => {
       const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
       const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
       return dateB - dateA; // descending order
     });
-    data = fetchedData;
+    originalData = fetchedData; 
+    filteredData = [...fetchedData]; 
     updateTable();
   })
   .catch((error) => {
@@ -22,7 +24,7 @@ fetch("https://api.kneesync.com/alerts")
 
 function populateTable(data) {
   const tableBody = document.querySelector("#alertTable tbody");
-  tableBody.innerHTML = ""; // Clear existing rows
+  tableBody.innerHTML = ""; 
 
   if (data.length === 0) {
     const row = document.createElement("tr");
@@ -66,14 +68,14 @@ function updatePagination(totalPages) {
   }
 }
 
-// Function to update the table based on the current page
+
 function updateTable() {
   const start = (currentPage - 1) * recordsPerPage;
   const end = start + recordsPerPage;
-  const paginatedData = data.slice(start, end);
+  const paginatedData = filteredData.slice(start, end);
 
   populateTable(paginatedData);
-  updatePagination(Math.ceil(data.length / recordsPerPage));
+  updatePagination(Math.ceil(filteredData.length / recordsPerPage));
 }
 
 // Function to filter the table based on search and date range
@@ -81,7 +83,8 @@ function filterTable() {
   const searchTerm = document.getElementById("search").value.toLowerCase();
   const searchFilter = document.getElementById("searchFilter").value;
 
-  const filteredData = data.filter((row) => {
+  // Filter from the original sorted data
+  filteredData = originalData.filter((row) => {
     const matchesSearch =
       searchFilter === "all"
         ? Object.values(row).some((value) =>
@@ -89,7 +92,7 @@ function filterTable() {
           )
         : String(row[searchFilter]).toLowerCase().includes(searchTerm);
 
-    // Combine date_stamp and time_stamp to create a full timestamp
+  
     const fullTimestamp = `${row.date_stamp}T${row.time_stamp}`;
     const rowTime = new Date(fullTimestamp);
     const matchesDate =
@@ -100,8 +103,14 @@ function filterTable() {
     return matchesSearch && matchesDate;
   });
 
-  currentPage = 1;
-  data = filteredData;
+  // Sort the filtered data to maintain newest to oldest order
+  filteredData.sort((a, b) => {
+    const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
+    const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
+    return dateB - dateA; 
+  });
+
+  currentPage = 1; 
   updateTable();
 }
 
@@ -125,13 +134,13 @@ flatpickr("#dateRange", {
 
 updateTable();
 
-// Add event listener for search input
+// Add event listeners
 document.getElementById("search").addEventListener("input", filterTable);
-// Add event listener for search filter dropdown
+
 document
   .getElementById("searchFilter")
   .addEventListener("change", filterTable);
-// Add event listener for records per page dropdown
+
 document
   .getElementById("recordsPerPage")
-  .addEventListener("change", changePageSize);  
+  .addEventListener("change", changePageSize);
