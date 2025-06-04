@@ -239,7 +239,6 @@
         // Initialize when page loads
         document.addEventListener('DOMContentLoaded', initializeSettings);
 
-        // Handle escape key to close
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeSettings();

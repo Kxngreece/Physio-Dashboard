@@ -12,7 +12,7 @@ fetch("https://api.kneesync.com/alerts")
     fetchedData.sort((a, b) => {
       const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
       const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
-      return dateB - dateA; // descending order
+      return dateA - dateB; 
     });
     originalData = fetchedData; 
     filteredData = [...fetchedData]; 
@@ -41,7 +41,7 @@ function populateTable(data) {
         <td>${row.brace_id}</td>
         <td>${row.type}</td>
         <td>${row.message}</td>
-        <td>${row.date_stamp}</td>
+
         <td>${row.time_stamp}</td>
       `;
       tableBody.appendChild(tr);
@@ -78,7 +78,7 @@ function updateTable() {
   updatePagination(Math.ceil(filteredData.length / recordsPerPage));
 }
 
-// Function to filter the table based on search and date range
+
 function filterTable() {
   const searchTerm = document.getElementById("search").value.toLowerCase();
   const searchFilter = document.getElementById("searchFilter").value;
