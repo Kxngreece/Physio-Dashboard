@@ -8,11 +8,10 @@ let selectedDates = [];
 fetch("https://api.kneesync.com/alerts")
   .then((response) => response.json())
   .then((fetchedData) => {
-    // Sort the data: newest to oldest using 
     fetchedData.sort((a, b) => {
-      const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
-      const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
-      return dateA - dateB; 
+      const dateA = new Date(a.time_stamp);
+      const dateB = new Date(b.time_stamp);
+      return dateB - dateA; // Newest first (descending order)
     });
     originalData = fetchedData; 
     filteredData = [...fetchedData]; 
@@ -29,7 +28,7 @@ function populateTable(data) {
   if (data.length === 0) {
     const row = document.createElement("tr");
     const noResultsCell = document.createElement("td");
-    noResultsCell.colSpan = 5;
+    noResultsCell.colSpan = 4; // Changed from 5 to 4 since you have 4 columns
     noResultsCell.textContent = "No results found";
     noResultsCell.style.textAlign = "center";
     row.appendChild(noResultsCell);
@@ -37,12 +36,13 @@ function populateTable(data) {
   } else {
     data.forEach((row) => {
       const tr = document.createElement("tr");
+      // Format the datetime for display
+      const displayTime = new Date(row.time_stamp).toLocaleString();
       tr.innerHTML = `
         <td>${row.brace_id}</td>
         <td>${row.type}</td>
         <td>${row.message}</td>
-
-        <td>${row.time_stamp}</td>
+        <td>${displayTime}</td>
       `;
       tableBody.appendChild(tr);
     });
@@ -68,7 +68,6 @@ function updatePagination(totalPages) {
   }
 }
 
-
 function updateTable() {
   const start = (currentPage - 1) * recordsPerPage;
   const end = start + recordsPerPage;
@@ -77,7 +76,6 @@ function updateTable() {
   populateTable(paginatedData);
   updatePagination(Math.ceil(filteredData.length / recordsPerPage));
 }
-
 
 function filterTable() {
   const searchTerm = document.getElementById("search").value.toLowerCase();
@@ -92,9 +90,8 @@ function filterTable() {
           )
         : String(row[searchFilter]).toLowerCase().includes(searchTerm);
 
-  
-    const fullTimestamp = `${row.date_stamp}T${row.time_stamp}`;
-    const rowTime = new Date(fullTimestamp);
+    // Date filtering using the time_stamp directly
+    const rowTime = new Date(row.time_stamp);
     const matchesDate =
       selectedDates.length === 2
         ? rowTime >= selectedDates[0] && rowTime <= selectedDates[1]
@@ -105,9 +102,9 @@ function filterTable() {
 
   // Sort the filtered data to maintain newest to oldest order
   filteredData.sort((a, b) => {
-    const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
-    const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
-    return dateB - dateA; 
+    const dateA = new Date(a.time_stamp);
+    const dateB = new Date(b.time_stamp);
+    return dateB - dateA; // Newest first (descending order)
   });
 
   currentPage = 1; 
@@ -132,15 +129,7 @@ flatpickr("#dateRange", {
   },
 });
 
-updateTable();
-
 // Add event listeners
 document.getElementById("search").addEventListener("input", filterTable);
-
-document
-  .getElementById("searchFilter")
-  .addEventListener("change", filterTable);
-
-document
-  .getElementById("recordsPerPage")
-  .addEventListener("change", changePageSize);
+document.getElementById("searchFilter").addEventListener("change", filterTable);
+document.getElementById("recordsPerPage").addEventListener("change", changePageSize);
