@@ -345,7 +345,6 @@ header h1 {
         justify-content: flex-start; /* Align selector left */
     }
 
-     /* Further adjustments if sidebar collapses fully */
     #content {
         margin-left: 0; /* No margin if sidebar is hidden or overlayed */
         padding: 15px;
