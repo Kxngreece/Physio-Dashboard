@@ -20,7 +20,7 @@
             };
           });
           
-          // Sort the data: newest to oldest
+         
           transformedData.sort((a, b) => {
             const dateA = new Date(`${a.date_stamp}T${a.time_stamp}`);
             const dateB = new Date(`${b.date_stamp}T${b.time_stamp}`);
@@ -56,7 +56,6 @@
                 <td>${row.angle}°</td>
                 <td>${row.emg_reading}</td>
                 <td>${row.date_stamp}</td>
-                <td>${row.time_stamp}</td>
               `;
               tableBody.appendChild(tr);
             });
@@ -97,7 +96,7 @@
           const searchTerm = document.getElementById("search").value.toLowerCase();
           const searchFilter = document.getElementById("searchFilter").value;
 
-          // Filter from the original sorted data
+          
           filteredData = originalData.filter((row) => {
             const matchesSearch =
               searchFilter === "all"
